@@ -1,4 +1,4 @@
-# 🗑️ Smart Waste Bin Proposal
+# 🗑️ Smart Waste Bin
 
 ## 🚀 Project Overview
 
