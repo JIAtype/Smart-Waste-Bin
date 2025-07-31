@@ -39,29 +39,13 @@ In the era of smart buildings and digital campuses, **traditional waste manageme
 
 ```mermaid
 flowchart TD
-    subgraph Hardware
-        S1[Multi-Sensors (Camera, Ultrasonic, Weight)]
-        RP[Raspberry Pi 4]
-        TB3[TurtleBot3 Robot]
-    end
-    subgraph On-board Software
-        ROS[ROS]
-        SLAM[SLAM & Path Planning]
-        CV[AI Vision: Classification]
-    end
-    subgraph Cloud/Remote
-        Dashboard[Remote Monitoring Dashboard]
-        Analytics[Data Analysis & Scheduling]
-    end
-    
-    S1 --> RP
-    RP --> ROS
+    Sensors --> RPi
+    RPi --> ROS
     ROS --> SLAM
-    ROS --> CV
-    ROS --> TB3
-    SLAM --> TB3
-    CV --> TB3
-    RP --> Dashboard
+    ROS --> Vision
+    SLAM --> Robot
+    Vision --> Robot
+    RPi --> Dashboard
     Dashboard --> Analytics
 ```
 
