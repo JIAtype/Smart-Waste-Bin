@@ -38,12 +38,31 @@ In the era of smart buildings and digital campuses, **traditional waste manageme
 #### **System Architecture**
 
 ```mermaid
-graph LR
-A[Multi-Sensors (Camera, Ultrasonic, Weight)] --> B[Raspberry Pi 4]
-B --> C[ROS on TurtleBot3]
-C --> D[SLAM & Path Planning]
-C --> E[AI Vision Garbage Classification]
-C --> F[Remote Monitoring Dashboard]
+flowchart TD
+    subgraph Hardware
+        S1[Multi-Sensors (Camera, Ultrasonic, Weight)]
+        RP[Raspberry Pi 4]
+        TB3[TurtleBot3 Robot]
+    end
+    subgraph On-board Software
+        ROS[ROS]
+        SLAM[SLAM & Path Planning]
+        CV[AI Vision: Classification]
+    end
+    subgraph Cloud/Remote
+        Dashboard[Remote Monitoring Dashboard]
+        Analytics[Data Analysis & Scheduling]
+    end
+    
+    S1 --> RP
+    RP --> ROS
+    ROS --> SLAM
+    ROS --> CV
+    ROS --> TB3
+    SLAM --> TB3
+    CV --> TB3
+    RP --> Dashboard
+    Dashboard --> Analytics
 ```
 
 ---
